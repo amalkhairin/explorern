@@ -5,7 +5,7 @@ import ReusableStoryAvatar from './ReusableStoryAvatar'
 
 const StoryAvatar = ({ item }) => {
     return (
-        <ReusableStoryAvatar size={60} imageUrl={item.imageUrl} hasActiveStory={item.hasAlreadyViewed} />
+        <ReusableStoryAvatar size={60} imageUrl={item.imageUrl} hasActiveStory={item.hasActiveStory} hasAlreadyViewed={item.hasAlreadyViewed} />
     )
 }
 

@@ -37,7 +37,7 @@ const HasActiveStory = ({hasAlreadyViewed, storyFrameWidth, size, imageUrl}) => 
 const ReusableStoryAvatar = (props) => {
     const storyFrameWidth = getStoryFrameWidth(props.size);
 
-    return !props.hasActiveStory ?
+    return props.hasActiveStory ?
         <HasActiveStory
         size={props.size}
         storyFrameWidth={storyFrameWidth}
