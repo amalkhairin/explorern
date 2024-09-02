@@ -8,6 +8,7 @@ import { createTamagui, TamaguiProvider } from "tamagui";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import Header from "./src/components/Header";
+import Stories from "./src/components/Stories";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -40,6 +41,7 @@ const App = () => {
     return (
       <>
         <Header />
+        <Stories />
         <Text>Hello World</Text>
       </>
     );
@@ -64,7 +66,7 @@ const App = () => {
             contentContainerStyle={{
               justifyContent: "flex-start",
               flex: 1,
-              backgroundColor:"white"
+              backgroundColor:"white",
             }}
             onLayout={onLayoutRootView}
             refreshControl={
