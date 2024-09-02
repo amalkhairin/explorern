@@ -6,7 +6,7 @@ const CustomBottomSheetModal = forwardRef((props, ref) => {
 	const snapPoints = useMemo(() => ['50%', '90%'], []);
 
 	return (
-		<BottomSheetModal ref={ref} index={props.index} snapPoints={snapPoints} onDismiss={props.onDismiss}>
+		<BottomSheetModal ref={ref} index={props.index} snapPoints={snapPoints} enableDismissOnClose={true} dismissOnOverlayPress={true} >
 			<View style={styles.contentContainer}>
 				<Text style={styles.containerHeadline}>Bottom Modal 😎</Text>
 			</View>

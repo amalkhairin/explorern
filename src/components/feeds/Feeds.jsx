@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import FeedHeader from './FeedHeader';
-import { Button, Image, Text } from 'react-native';
+import { Button, Image, Text, TouchableWithoutFeedback } from 'react-native';
 import FeedActions from './FeedActions';
 import FeedLikes from './FeedLikes';
 import FeedCaption from './FeedCaption';
@@ -53,6 +53,15 @@ const Feeds = () => {
         console.log('handleSheetChanges', index);
     }, []);
 
+    const handleModalDismiss = useCallback(() => {
+        console.log('Modal dismissed!');
+        // Tambahkan logika tambahan di sini jika diperlukan
+      }, []);
+
+    const handleOverlayPress = useCallback(() => {
+        dismiss(); // Menutup modal
+      }, [dismiss]);
+
     // props.item
     const Feed = (props) => {
         const postDateText = getPostDateText(props.item.feed.postDate);
@@ -61,7 +70,7 @@ const Feeds = () => {
                 <CustomBottomSheetModal
                     ref={bottomSheetRef}
                     index={indexModal}
-                    onDismiss={handleSheetChanges}
+                    onDismiss={handleModalDismiss}
                 />
                 <FeedHeader {...props} />
                 <Image
@@ -88,14 +97,16 @@ const Feeds = () => {
     };
 
     return (
-        <FlatList
-            data={FEED_DATA}
-            style={{
-                paddingHorizontal: 10,
-                backgroundColor: "white",
-            }}
-            renderItem={Feed}
-        />
+        <TouchableWithoutFeedback onPress={handleOverlayPress}>
+            <FlatList
+                data={FEED_DATA}
+                style={{
+                    paddingHorizontal: 10,
+                    backgroundColor: "white",
+                }}
+                renderItem={Feed}
+            />
+        </TouchableWithoutFeedback>
     );
 };
 
