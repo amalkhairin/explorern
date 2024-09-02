@@ -93,9 +93,6 @@ const CustomBottomSheetModal = forwardRef((props, ref) => {
                     </View>
                 ))}
             </View>
-            <View style={{ backgroundColor: 'red', width: '100%' }}>
-                <Text>skdjkladjslkadjsalkdjalk</Text>
-            </View>
         </BottomSheetModal>
     );
 });
