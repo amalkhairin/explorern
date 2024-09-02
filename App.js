@@ -19,7 +19,8 @@ const App = () => {
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
     // @ts-ignore
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
-    // "StyleScript-Regular": require("./assets/fonts/ttf/StyleScript-Regular.ttf"),
+    // @ts-ignore
+    "StyleScript-Regular": require("./assets/fonts/ttf/StyleScript-Regular.ttf"),
   });
 
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -69,7 +70,6 @@ const App = () => {
               <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
             }
           />
-          <Text>Hello World</Text>
         </TamaguiProvider>
       </SafeAreaView>
     </SafeAreaProvider>
