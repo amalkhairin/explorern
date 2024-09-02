@@ -56,11 +56,11 @@ const Feeds = () => {
     const handleModalDismiss = useCallback(() => {
         console.log('Modal dismissed!');
         // Tambahkan logika tambahan di sini jika diperlukan
-      }, []);
+    }, []);
 
     const handleOverlayPress = useCallback(() => {
         dismiss(); // Menutup modal
-      }, [dismiss]);
+    }, [dismiss]);
 
     // props.item
     const Feed = (props) => {
@@ -70,6 +70,7 @@ const Feeds = () => {
                 <CustomBottomSheetModal
                     ref={bottomSheetRef}
                     index={indexModal}
+                    item={props.item}
                     onDismiss={handleModalDismiss}
                 />
                 <FeedHeader {...props} />
@@ -87,11 +88,11 @@ const Feeds = () => {
                 <FeedLikes {...props} />
                 <FeedCaption {...props} />
                 <TouchableOpacity onPress={() => handlePresentModalPress(0)}>
-                    <Text style={{ color: "gray" }}>
+                    <Text style={{ color: "gray", paddingHorizontal: 10 }}>
                         View All {props.item.feed.totalComments} Comments
                     </Text>
                 </TouchableOpacity>
-                <Text style={{ color: "gray" }}>{postDateText}</Text>
+                <Text style={{ color: "gray", paddingHorizontal: 10 }}>{postDateText}</Text>
             </>
         );
     };
@@ -101,7 +102,8 @@ const Feeds = () => {
             <FlatList
                 data={FEED_DATA}
                 style={{
-                    paddingHorizontal: 10,
+                    // paddingHorizontal: 10,
+                    gap: 20,
                     backgroundColor: "white",
                 }}
                 renderItem={Feed}
@@ -139,7 +141,12 @@ const FEED_DATA = [
             ],
             caption:
                 "Berakit rakit ke hulu berenang renang ketepian, bersakit sakit dahulu bersenang senang dalam kesepian. Kerja keras, istirahat dan tidur yang cukup, dan banyak berdoa dan bersyukur.",
-            totalComments: 5,
+            totalComments: 3,
+            comments: [ // Menambahkan data komentar
+                { id: '1', username: 'Alice', text: 'Nice post!', profilePic: 'https://randomuser.me/api/portraits/women/44.jpg', commentDate: Date.now() - 60 * 60 * 24 * 1000 * 199 },
+                { id: '2', username: 'Bob', text: 'I agree! lorem ipsum dolor sit amet, this is a comment', profilePic: 'https://randomuser.me/api/portraits/men/45.jpg', commentDate: Date.now() - 60 * 60 * 24 * 1000 * 130 },
+                { id: '3', username: 'Charlie', text: 'Amazing photo!', profilePic: 'https://randomuser.me/api/portraits/men/46.jpg', commentDate: Date.now() - 60 * 60 * 24 * 1000 * 126 },
+            ],
             postDate: Date.now() - 60 * 60 * 24 * 1000 * 199,
         },
     },
@@ -171,7 +178,12 @@ const FEED_DATA = [
             ],
             caption:
                 "Berakit rakit ke hulu berenang renang ketepian, bersakit sakit dahulu bersenang senang dalam kesepian. Kerja keras, istirahat dan tidur yang cukup, dan banyak berdoa dan bersyukur.",
-            totalComments: 5,
+            totalComments: 3,
+            comments: [ // Menambahkan data komentar
+                { id: '1', username: 'Alice', text: 'Nice post!', profilePic: 'https://randomuser.me/api/portraits/women/44.jpg', commentDate: Date.now() - 60 * 60 * 24 * 1000 * 199 },
+                { id: '2', username: 'Bob', text: 'I agree! lorem ipsum dolor sit amet, this is a comment', profilePic: 'https://randomuser.me/api/portraits/men/45.jpg', commentDate: Date.now() - 60 * 60 * 24 * 1000 * 130 },
+                { id: '3', username: 'Charlie', text: 'Amazing photo!', profilePic: 'https://randomuser.me/api/portraits/men/46.jpg', commentDate: Date.now() - 60 * 60 * 24 * 1000 * 126 },
+            ],
             postDate: Date.now() - 60 * 60 * 24 * 1000 * 199,
         },
     },
@@ -203,7 +215,12 @@ const FEED_DATA = [
             ],
             caption:
                 "Berakit rakit ke hulu berenang renang ketepian, bersakit sakit dahulu bersenang senang dalam kesepian. Kerja keras, istirahat dan tidur yang cukup, dan banyak berdoa dan bersyukur.",
-            totalComments: 5,
+            totalComments: 3,
+            comments: [ // Menambahkan data komentar
+                { id: '1', username: 'Alice', text: 'Nice post!', profilePic: 'https://randomuser.me/api/portraits/women/44.jpg', commentDate: Date.now() - 60 * 60 * 24 * 1000 * 199 },
+                { id: '2', username: 'Bob', text: 'I agree! lorem ipsum dolor sit amet, this is a comment', profilePic: 'https://randomuser.me/api/portraits/men/45.jpg', commentDate: Date.now() - 60 * 60 * 24 * 1000 * 130 },
+                { id: '3', username: 'Charlie', text: 'Amazing photo!', profilePic: 'https://randomuser.me/api/portraits/men/46.jpg', commentDate: Date.now() - 60 * 60 * 24 * 1000 * 126 },
+            ],
             postDate: Date.now() - 60 * 60 * 24 * 1000 * 199,
         },
     },

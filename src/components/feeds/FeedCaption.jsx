@@ -15,13 +15,13 @@ const FeedCaption = (props) => {
 
     const getDisplayText = () => {
         if (expanded || props.item.feed.caption.length <= charLimit) {
-          return props.item.feed.caption;
+            return props.item.feed.caption;
         }
         return props.item.feed.caption.slice(0, charLimit);
-      };
+    };
 
     return (
-        <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: "row", flexWrap: "wrap", paddingHorizontal: 10 }}>
             <Text style={{ fontWeight: "bold" }}>
                 {props.item.username}{" "}
                 <Text numberOfLines={2} style={{ fontWeight: "300" }}>
