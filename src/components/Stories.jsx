@@ -11,7 +11,7 @@ const StoryAvatar = ({ item }) => {
 
 const StoryAvatarWithName = ({ item }) => {
     return (
-        <TouchableOpacity activeOpacity={0.2} style={{ alignItems: "center", maxWidth: 80 }}>
+        item.hasActiveStory && <TouchableOpacity activeOpacity={0.2} style={{ alignItems: "center", maxWidth: 80 }}>
             <StoryAvatar item={item} />
             <Text ellipsizeMode='tail' numberOfLines={1}>{item.name}</Text>
         </TouchableOpacity>
