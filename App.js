@@ -7,6 +7,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { createTamagui, TamaguiProvider } from "tamagui";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import Header from "./src/components/Header";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -38,7 +39,8 @@ const App = () => {
   const ContentComponent = () => {
     return (
       <>
-      <Text>Hello World</Text>
+        <Header />
+        <Text>Hello World</Text>
       </>
     );
   };
@@ -60,8 +62,7 @@ const App = () => {
             data={[{}]}
             renderItem={ContentComponent}
             contentContainerStyle={{
-              justifyContent: "center",
-              alignItems: "center",
+              justifyContent: "flex-start",
               flex: 1,
               backgroundColor:"white"
             }}
