@@ -1,0 +1,40 @@
+import { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+
+//TODO: branch name suggestion: challenge-hari-ketiga
+// TODO: buat agar text more-nya sejajar dengan caption, sebelum di klik more itu caption yang tampil maksimal 2 baris
+// TODO: dan setelah di klik more nya, semua caption tampil
+const FeedCaption = (props) => {
+
+    const [expanded, setExpanded] = useState(false);
+    const charLimit = 92;
+
+    const toggleExpanded = () => {
+        setExpanded(!expanded);
+    };
+
+    const getDisplayText = () => {
+        if (expanded || props.item.feed.caption.length <= charLimit) {
+          return props.item.feed.caption;
+        }
+        return props.item.feed.caption.slice(0, charLimit);
+      };
+
+    return (
+        <View style={{ flexDirection: "row" }}>
+            <Text style={{ fontWeight: "bold" }}>
+                {props.item.username}{" "}
+                <Text numberOfLines={2} style={{ fontWeight: "300" }}>
+                    {getDisplayText()}
+                </Text>
+                {
+                    expanded
+                        ? <Text style={{ textAlign: "center" }} onPress={toggleExpanded}>less</Text>
+                        : <Text style={{ textAlign: "center" }} onPress={toggleExpanded}>...more</Text>
+                }
+            </Text>
+        </View>
+    );
+};
+
+export default FeedCaption;

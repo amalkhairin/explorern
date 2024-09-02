@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { FontAwesome6 } from '@expo/vector-icons';
 import Images from '../../assets/images';
+import ReusableHeader from './reusables/ReusableHeader';
 
 const HeaderLeftSide = () => (
     <Text style={{
@@ -13,7 +14,7 @@ const HeaderLeftSide = () => (
 )
 
 const HeaderRightSide = () => (
-    <View style={{ flexDirection: "row", gap: 9*2, alignItems: "center" }}>
+    <View style={{ flexDirection: "row", gap: 9 * 2, alignItems: "center" }}>
         <TouchableOpacity activeOpacity={0.2}>
             <FontAwesome6 name="square-plus" size={24} color="black" />
         </TouchableOpacity>
@@ -21,18 +22,23 @@ const HeaderRightSide = () => (
             <FontAwesome6 name="heart" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.2}>
-            <Image source={Images.facebookMessenger} style={{ width: 24, height: 24, marginLeft: -2.5 }}/>
+            <Image source={Images.facebookMessenger} style={{ width: 24, height: 24, marginLeft: -2.5 }} />
         </TouchableOpacity>
     </View>
 )
 
 function Header() {
-  return (
-    <View style={{ flexDirection: "row", justifyContent: "space-between", padding: 10, backgroundColor: "yellow" }}>
-        <HeaderLeftSide />
-        <HeaderRightSide />
-    </View>
-  )
+    return (
+        <ReusableHeader leftSideComponent={<HeaderLeftSide />} rightSideComponent={<HeaderRightSide />} />
+        // <View style={{ flexDirection: "row", justifyContent: "space-between", paddingVertical: 5, paddingHorizontal: 10, backgroundColor: "yellow" }}>
+        //     <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+        //         <HeaderLeftSide />
+        //     </View>
+        //     <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+        //         <HeaderRightSide />
+        //     </View>
+        // </View>
+    )
 }
 
 export default Header

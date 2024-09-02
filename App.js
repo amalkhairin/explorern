@@ -9,6 +9,9 @@ import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import Header from "./src/components/Header";
 import Stories from "./src/components/Stories";
+import Feeds from "./src/components/feeds/Feeds";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,7 +45,7 @@ const App = () => {
       <>
         <Header />
         <Stories />
-        <Text>Hello World</Text>
+        <Feeds />
       </>
     );
   };
@@ -56,26 +59,30 @@ const App = () => {
   }
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <TamaguiProvider config={tamaguiConfig}>
-          <StatusBar style="light" backgroundColor="black" />
-          <FlatList 
-            data={[{}]}
-            renderItem={ContentComponent}
-            contentContainerStyle={{
-              justifyContent: "flex-start",
-              flex: 1,
-              backgroundColor:"white",
-            }}
-            onLayout={onLayoutRootView}
-            refreshControl={
-              <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
-            }
-          />
-        </TamaguiProvider>
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <GestureHandlerRootView>
+      <BottomSheetModalProvider>
+        <SafeAreaProvider>
+          <SafeAreaView style={{ flex: 1 }}>
+            <TamaguiProvider config={tamaguiConfig}>
+              <StatusBar style="light" backgroundColor="black" />
+              <FlatList
+                data={[{}]}
+                renderItem={ContentComponent}
+                contentContainerStyle={{
+                  justifyContent: "flex-start",
+                  // flex: 1,
+                  backgroundColor: "white",
+                }}
+                onLayout={onLayoutRootView}
+                refreshControl={
+                  <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
+                }
+              />
+            </TamaguiProvider>
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 };
 
