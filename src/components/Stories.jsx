@@ -20,7 +20,8 @@ const StoryAvatarWithName = ({ item }) => {
 
 function Stories() {
   return (
-    <FlatList horizontal showsHorizontalScrollIndicator={false} data={storiesData}
+    <FlatList horizontal showsHorizontalScrollIndicator={false} data={storiesData.filter((story) => story.hasActiveStory)}
+    keyExtractor={(item) => item.id}
     contentContainerStyle={{ alignItems: "center", padding: 10, backgroundColor: "lightBlue", gap: 8 }}
     renderItem={StoryAvatarWithName} />
   )
@@ -46,7 +47,7 @@ const storiesData = [
     {
       id: "c-3",
       name: "Ichad",
-      hasActiveStory: true,
+      hasActiveStory: false,
       hasAlreadyViewed: true,
       imageUrl:
         "https://play-lh.googleusercontent.com/KnFMQzTkrsWoyFZPDovbEGxYbrJF_37APuzIPhYCT_dAFRBKCu57sDiezvQBxoSd5s4=w240-h480-rw",
@@ -55,7 +56,7 @@ const storiesData = [
       id: "d-4",
       name: "Levi",
       hasActiveStory: true,
-      hasAlreadyViewed: false,
+      hasAlreadyViewed: true,
       imageUrl:
         "https://assets.entrepreneur.com/content/3x2/2000/20180703190744-rollsafe-meme.jpeg?format=pjeg&auto=webp&crop=4:3",
     },
