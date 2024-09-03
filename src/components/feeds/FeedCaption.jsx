@@ -24,7 +24,7 @@ const FeedCaption = (props) => {
         <View style={{ flexDirection: "row", flexWrap: "wrap", paddingHorizontal: 10 }}>
             <Text style={{ fontWeight: "bold" }}>
                 {props.item.username}{" "}
-                <Text numberOfLines={2} style={{ fontWeight: "300" }}>
+                <Text style={{ fontWeight: "300" }}>
                     {getDisplayText()}
                 </Text>
                 {
